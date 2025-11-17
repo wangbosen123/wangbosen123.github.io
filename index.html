@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>王柏森 | 個人作品集</title>
+  <meta name="description" content="王柏森｜AI 演算法工程師｜學經歷、技能專長、專案介紹與聯絡方式" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0d13; --fg:#e7ecf3; --muted:#9aa3af; --primary:#7c8cff; --card:#141826; --accent:#22d3ee;
+      --border: rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";}
+    body{background:linear-gradient(180deg, #0b0d13 0%, #0e1423 100%);color:var(--fg);}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(11,13,19,.6);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:50}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    nav .links a{margin:0 10px;color:var(--muted)}
+    nav .links a:hover{color:var(--fg)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .tag{display:inline-block;padding:4px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:12px;margin-right:8px}
+    h1{font-size:44px;margin:8px 0 12px}
+    h2{font-size:26px;margin:0 0 16px}
+    p{line-height:1.7;color:#cbd5e1}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .pill{background:rgba(124,140,255,.15);border:1px solid rgba(124,140,255,.35);color:#dfe3ff;border-radius:999px;padding:8px 12px;font-size:13px;display:inline-flex;gap:8px;align-items:center;margin:6px}
+    .section{padding:24px 0}
+    .section + .section{padding-top:8px}
+    .kpi{display:flex;gap:18px;flex-wrap:wrap}
+    .kpi .box{flex:1;min-width:160px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+    .kpi .num{font-size:28px;font-weight:800;background:linear-gradient(90deg, var(--accent), #a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .avatar{width:100%;aspect-ratio:1/1;border-radius:16px;object-fit:cover;border:1px solid var(--border)}
+    .timeline{border-left:2px solid var(--border);padding-left:16px;display:grid;gap:18px}
+    .timeline .item{position:relative}
+    .timeline .item::before{content:"";position:absolute;left:-10px;top:6px;width:10px;height:10px;background:var(--accent);border-radius:50%}
+    .proj-card{position:relative;overflow:hidden}
+    .proj-card img{width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid var(--border)}
+    .proj-card h3{margin:10px 0 6px}
+    .footer{padding:24px 0;border-top:1px solid var(--border);text-align:center;color:var(--muted)}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr} h1{font-size:36px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div style="font-weight:800;letter-spacing:.3px">Bosen Wang · Portfolio</div>
+        <div class="links">
+          <a href="#about">關於我</a>
+          <a href="#experience">學經歷</a>
+          <a href="#skills">技能專長</a>
+          <a href="#projects">專案介紹</a>
+          <a href="#contact">聯絡</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="card">
+        <span class="tag">AI 演算法工程師</span>
+        <h1>把 AI 帶進設備現場，<br/>從模型到產線落地。</h1>
+        <p>
+          我是 <strong>王柏森</strong>（Bosen），專長於 <strong>電腦視覺、深度學習與工業落地</strong>。具有 PCB/Probe-Card 影像檢測、Segmentation/Detection、路徑規劃與設備串接經驗。
+        </p>
+        <div class="kpi">
+          <div class="box"><div class="num">7+ 份</div><div>量產/驗證專案</div></div>
+          <div class="box"><div class="num">95%+</div><div>模型測試準確率</div></div>
+          <div class="box"><div class="num">±3 mm</div><div>設備控制內部誤差</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="avatar" src="assets/profile.jpg" alt="個人照片（請放入 assets/profile.jpg）">
+        <p style="margin-top:12px;color:var(--muted)">提示：把你的個人照放在 <code>assets/profile.jpg</code> 即可顯示。</p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section card">
+      <h2>關於我</h2>
+      <p>
+        中興資工碩士，研究領域包含 <strong>GAN 超解析、人臉辨識</strong> 與 <strong>醫學影像良惡性判別</strong>。歷任 <strong>中華精測</strong> 等公司，負責將 AI 模型落地到設備端，串接 Gerber/IPC-356、SQL 紀錄、控制器與 UI。
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section grid cols-2">
+      <div class="card">
+        <h2>學歷</h2>
+        <div class="timeline">
+          <div class="item">
+            <strong>國立中興大學 — 資訊工程碩士</strong>
+            <div class="muted">研究：GAN 超解析、人臉識別、醫學影像</div>
+          </div>
+          <div class="item">
+            <strong>（你的大學）— 資訊工程學士</strong>
+            <div class="muted">主修：影像處理、機器學習</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>經歷</h2>
+        <div class="timeline">
+          <div class="item">
+            <strong>中華精測 — AI 演算法工程師</strong>
+            <div class="muted">PCB/Probe-Card 影像檢測、分割、設備導入</div>
+          </div>
+          <div class="item">
+            <strong>中國醫藥大學附醫 — 影像 AI 專案</strong>
+            <div class="muted">腮腺腫瘤偵測（YOLO）</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section card">
+      <h2>技能專長</h2>
+      <div>
+        <span class="pill">Python / C#</span>
+        <span class="pill">PyTorch / TensorFlow</span>
+        <span class="pill">OpenCV</span>
+        <span class="pill">Segmentation / Detection / OBB</span>
+        <span class="pill">RAG / FAISS / Embeddings</span>
+        <span class="pill">SQL / SSMS</span>
+        <span class="pill">Gerber / IPC‑356</span>
+        <span class="pill">Edge Deployment</span>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <h2 style="margin:0 0 12px">專案介紹</h2>
+      <div class="grid cols-3">
+        <article class="card proj-card">
+          <img src="assets/projects/pcb-spray.jpg" alt="PCB 噴塗路徑最佳化">
+          <h3>PCB 矩陣保護噴塗機</h3>
+          <p>OpenCV + 多模型 Ensemble 分割，路徑最佳化，自動產生噴塗軌跡；誤差控制至 ±3mm。</p>
+        </article>
+        <article class="card proj-card">
+          <img src="assets/projects/2d-defect.jpg" alt="2D 瑕疵檢測">
+          <h3>2D 瑕疵檢測機</h3>
+          <p>PAD/Hole/文字/線路缺陷檢測；旋轉傾斜魯棒；UI 可視化一站式模組。</p>
+        </article>
+        <article class="card proj-card">
+          <img src="assets/projects/impedance.jpg" alt="外層阻抗量測">
+          <h3>外層阻抗量測機</h3>
+          <p>Gerber/IPC‑356 串接定位；SQL 紀錄；波型判定與數據驗證。</p>
+        </article>
+      </div>
+      <p style="color:var(--muted);margin-top:8px">提示：把專案圖放到 <code>assets/projects/</code>，並替換上面三張圖片檔名。</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section card">
+      <h2>聯絡</h2>
+      <p>Email：<a href="mailto:you@example.com">you@example.com</a>｜LinkedIn：<a href="#">linkedin.com/in/your-id</a>｜GitHub：<a href="#">github.com/your-id</a></p>
+    </section>
+
+    <footer class="footer">© <span id="y"></span> Bosen Wang. All rights reserved.</footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // 平滑捲動
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{const id=a.getAttribute('href');if(id.length>1){e.preventDefault();document.querySelector(id).scrollIntoView({behavior:'smooth',block:'start'});}})
+    });
+  </script>
+</body>
+</html>
