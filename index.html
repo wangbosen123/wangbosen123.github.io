@@ -5,29 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>王柏森 | 個人首頁</title>
 
-    <!-- 
-        字型載入（可依自己喜好更換或刪掉）
-        這裡用的是 Google Fonts 的 Inter
-    -->
+    <!-- 字型，可改或刪 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ========= 全域變數：顏色主題 ========= */
+        /* ========= 顏色主題（改成像範例頁那種淺底＋紅色） ========= */
         :root {
-            --bg: #0b0d13;          /* 整體背景顏色 */
-            --bg-soft: #141826;     /* 卡片、區塊背景顏色 */
-            --fg: #e7ecf3;          /* 主要文字顏色 */
-            --muted: #9aa3af;       /* 次要文字顏色 */
-            --primary: #7c8cff;     /* 主色（按鈕、重點） */
-            --accent: #22d3ee;      /* 輔助強調色 */
-            --border: rgba(255,255,255,0.08); /* 卡片邊框顏色 */
+            --bg: #ffffff;          /* 主背景 */
+            --sidebar-bg: #f5f5f5;  /* 側邊欄背景 */
+            --fg: #222222;          /* 主要文字 */
+            --muted: #777777;       /* 次要文字 */
+            --primary: #e53935;     /* 紅色重點（標題底線等） */
+            --border: #e0e0e0;      /* 淺灰邊框 */
+            --card-bg: #ffffff;     /* 區塊卡片背景 */
         }
 
         /* ========= 通用設定 ========= */
         * {
-            box-sizing: border-box; /* 讓 padding 不會撐大元素 */
+            box-sizing: border-box;
         }
 
         html, body {
@@ -36,170 +33,191 @@
             font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             background-color: var(--bg);
             color: var(--fg);
-            scroll-behavior: smooth; /* 點擊錨點時平滑捲動 */
+            scroll-behavior: smooth;
         }
 
         a {
-            color: inherit;           /* 預設連結顏色跟文字一樣 */
-            text-decoration: none;    /* 移除底線 */
+            color: inherit;
+            text-decoration: none;
         }
 
         /* ========= 主體布局：左邊側欄 + 右邊內容 ========= */
         .layout {
             display: flex;
-            min-height: 100vh; /* 讓高度至少滿版 */
+            min-height: 100vh;
         }
 
-        /* ========= 左側側邊欄 ========= */
+        /* ========= 左側側邊欄（模仿 CV_LAB 那種窄窄左欄） ========= */
         .sidebar {
-            width: 240px;                    /* 側欄寬度，可自行調整 */
-            background: #05060a;             /* 側欄背景 */
+            width: 260px;
+            background: var(--sidebar-bg);
             border-right: 1px solid var(--border);
-            padding: 24px 16px;
-            position: sticky;                /* 固定在畫面左側 */
-            top: 0;
-            align-self: flex-start;
-            height: 100vh;                   /* 讓側欄撐滿視窗高度 */
+            padding: 24px 20px;
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
-        /* 側欄中的個人資料區（大頭貼＋名稱＋職稱） */
-        .profile {
-            text-align: center;
+        /* 左上角 Logo / Title 區（你可以改成自己的字） */
+        .sidebar-brand {
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 1.3;
+            letter-spacing: 0.05em;
         }
 
-        /* 大頭貼圖片樣式：
-           你的檔案請放在 assets/profile.jpg */
+        .sidebar-brand-sub {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        /* 個人小資訊（可保留或刪掉） */
+        .profile {
+            margin-top: 8px;
+            text-align: left;
+        }
+
         .profile-avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 999px;           /* 圓形 */
-            border: 2px solid var(--accent);
-            object-fit: cover;              /* 填滿、不變形 */
-            margin-bottom: 12px;
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            margin-bottom: 8px;
         }
 
         .profile-name {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 4px;
         }
 
         .profile-title {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--muted);
         }
 
-        /* 側欄區塊標題：例如 Home / Project */
+        /* 左欄的各導航區塊標題（Home / Topic / Project） */
         .nav-section-title {
-            font-size: 13px;
-            font-weight: 600;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            font-size: 12px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
             color: var(--muted);
-            margin-bottom: 6px;
+            letter-spacing: 0.08em;
         }
 
-        /* 第一層導覽按鈕樣式（Home 首頁、Project 成果） */
+        /* 第一層按鈕（Home 首頁、Project 成果） */
         .nav-main-link {
             display: block;
             width: 100%;
             padding: 8px 10px;
-            border-radius: 999px;
+            border-radius: 4px;
             font-size: 14px;
             font-weight: 500;
             border: 1px solid transparent;
-            margin-bottom: 4px;
             text-align: left;
-            cursor: pointer;
         }
 
-        /* 當前頁面的主按鈕樣式（這裡 Home 是 active） */
         .nav-main-link.active {
-            background: rgba(124, 140, 255, 0.16);
-            border-color: rgba(124, 140, 255, 0.7);
+            background: #ffffff;
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
         .nav-main-link:hover {
-            background: rgba(255,255,255,0.04);
+            background: #ffffff;
         }
 
-        /* 第二層導覽列表容器（Topic 子項、Project 子項） */
+        /* 第二層列表（Topic 子項、Project 子項） */
         .nav-sublist {
-            list-style: none;               /* 移除前面的點 */
-            padding-left: 10px;
+            list-style: none;
+            padding-left: 8px;
             margin: 4px 0 12px;
-            border-left: 1px solid var(--border);
         }
 
         .nav-subitem {
-            margin: 4px 0;
+            margin: 2px 0;
         }
 
-        /* 第二層導覽按鈕樣式（關於我、學經歷、技能專長等） */
         .nav-sublink {
             display: block;
-            padding: 6px 10px;
+            padding: 6px 8px;
             font-size: 13px;
-            border-radius: 999px;
+            border-radius: 4px;
             color: var(--muted);
         }
 
         .nav-sublink:hover {
-            background: rgba(255,255,255,0.04);
+            background: #ffffff;
             color: var(--fg);
         }
 
-        /* ========= 右側主內容區 ========= */
-        .content {
+        /* ========= 右側主內容 ========= */
+        .content-wrapper {
             flex: 1;
-            padding: 32px 32px 64px;
-            max-width: 1080px;
+            padding: 24px 40px 48px;
+        }
+
+        /* 頁面頂部大標題區（HOME 首頁 + 紅線） */
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .page-header-title {
+            font-size: 32px;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .page-header-line {
+            width: 120px;
+            height: 5px;
+            background: var(--primary);
             margin: 0 auto;
         }
 
-        /* 通用的區塊外觀（關於我 / 學經歷 / 技能專長） */
-        .section {
-            margin-bottom: 40px;
-            padding: 24px 20px;
-            border-radius: 16px;
-            background: radial-gradient(circle at top left, rgba(124,140,255,0.12), transparent 50%),
-                        radial-gradient(circle at bottom right, rgba(34,211,238,0.12), transparent 55%),
-                        var(--bg-soft);
-            border: 1px solid var(--border);
+        /* 內容區真正的寬度（讓內容不要太寬） */
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        /* 區塊標題（例如：關於我 About Me） */
+        /* ========= 區塊（關於我 / 學經歷 / 技能專長） ========= */
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 16px; /* 只保留底部空間，風格更接近你截圖那個 */
+            border-bottom: 1px solid var(--border);
+        }
+
         .section-title {
             font-size: 20px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
-        /* 區塊副標題：用來加一兩句說明文字 */
         .section-subtitle {
             font-size: 13px;
             color: var(--muted);
             margin-bottom: 16px;
         }
 
-        /* 關於我區塊：使用左右兩欄排版 */
+        /* 關於我：左右兩欄（左文字＋右卡片） */
         .about-grid {
             display: grid;
-            grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+            grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.2fr);
             gap: 24px;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .about-text {
             font-size: 14px;
-            line-height: 1.6;
-            color: var(--fg);
+            line-height: 1.7;
         }
 
-        /* 關於我底下的小標籤（技能 / 關鍵字） */
         .about-tags {
             display: flex;
             flex-wrap: wrap;
@@ -211,107 +229,172 @@
             padding: 4px 10px;
             font-size: 12px;
             border-radius: 999px;
-            background: rgba(255,255,255,0.04);
             border: 1px solid var(--border);
+            background: #fafafa;
         }
 
-        /* 右側的簡單卡片樣式（可以改成專案縮圖、簡介等） */
         .info-card {
-            padding: 12px 12px;
-            border-radius: 12px;
-            background: rgba(0,0,0,0.16);
+            background: var(--card-bg);
             border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 12px 12px;
             font-size: 13px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .info-card-title {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 6px;
         }
 
-        /* ========= RWD：螢幕較小時的調整 ========= */
-        @media (max-width: 768px) {
+        /* 學經歷時間軸 */
+        .timeline {
+            border-left: 2px solid var(--border);
+            padding-left: 16px;
+            margin-top: 8px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: #ffffff;
+            border: 2px solid var(--primary);
+            position: absolute;
+            left: -21px;
+            top: 4px;
+        }
+
+        .timeline-role {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .timeline-org {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .timeline-time {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+
+        /* 技能卡片排版 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            padding: 12px 12px;
+        }
+
+        .skill-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .skill-list {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ========= 手機版調整 ========= */
+        @media (max-width: 900px) {
             .layout {
-                flex-direction: column;   /* 手機版改成上下排列 */
+                flex-direction: column;
             }
 
             .sidebar {
-                position: static;
                 width: 100%;
                 height: auto;
-                flex-direction: column;
-                align-items: stretch;
             }
 
-            .content {
-                padding: 20px 16px 40px;
+            .content-wrapper {
+                padding: 16px 16px 32px;
             }
 
             .about-grid {
-                grid-template-columns: 1fr; /* 小螢幕：關於我改成單欄 */
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- 
-    整體頁面外層容器：
-    左邊是側欄 .sidebar
-    右邊是主內容 .content
--->
 <div class="layout">
 
-    <!-- ========= 左側側邊欄開始 ========= -->
+    <!-- ========= 左側側邊欄 ========= -->
     <aside class="sidebar">
-        <!-- 個人資訊區：大頭貼＋名字＋簡短職稱 -->
-        <!-- 大頭貼圖片請放在 assets/profile.jpg -->
+        <!-- 左上角 Brand 區（你可以改成自己想要的文字） -->
+        <div>
+            <!-- 主標題 -->
+            <div class="sidebar-brand">
+                PORTFOLIO<br>
+                HOME PAGE
+            </div>
+            <!-- 副標（可自行改掉） -->
+            <div class="sidebar-brand-sub">
+                AI Algorithm Engineer
+            </div>
+        </div>
+
+        <!-- 簡單個人資訊（可調整或刪除） -->
         <div class="profile">
+            <!-- 大頭貼檔案位置：assets/profile.jpg -->
             <img src="assets/profile.jpg" alt="Profile" class="profile-avatar">
             <div class="profile-name">王柏森</div>
             <div class="profile-title">AI 演算法工程師</div>
         </div>
 
-        <!-- Home 首頁導覽區塊 -->
+        <!-- Home 導覽 -->
         <div>
-            <!-- 區塊小標題（文字而已） -->
-            <div class="nav-section-title">Home</div>
-
-            <!-- Home 首頁主按鈕 -->
-            <!-- 因為是首頁，所以 href 指向 #top（本頁最上方），並加上 active 樣式 -->
+            <div class="nav-section-title">HOME</div>
+            <!-- 本頁就是首頁，所以 active -->
             <a href="#top" class="nav-main-link active">Home 首頁</a>
 
-            <!-- Topic 子選單：
-                 關於我 / 學經歷 / 技能專長
-                 這些會捲動到本頁對應 id 的區塊（#about / #experience / #skills）
-            -->
+            <!-- Topic 子項：捲動到本頁的區塊 -->
+            <div class="nav-section-title" style="margin-top: 10px;">Topic</div>
             <ul class="nav-sublist">
                 <li class="nav-subitem">
-                    <a href="#about" class="nav-sublink">Topic｜關於我</a>
+                    <a href="#about" class="nav-sublink">關於我</a>
                 </li>
                 <li class="nav-subitem">
-                    <a href="#experience" class="nav-sublink">Topic｜學經歷</a>
+                    <a href="#experience" class="nav-sublink">學經歷</a>
                 </li>
                 <li class="nav-subitem">
-                    <a href="#skills" class="nav-sublink">Topic｜技能專長</a>
+                    <a href="#skills" class="nav-sublink">技能專長</a>
                 </li>
             </ul>
         </div>
 
-        <!-- Project 成果導覽區塊（指向別頁 projects.html） -->
+        <!-- Project 導覽（會連到 projects.html） -->
         <div>
             <div class="nav-section-title">Project</div>
-
-            <!-- Project 成果主按鈕：導向另一頁 projects.html -->
+            <!-- 主按鈕：整體導向 projects.html -->
             <a href="projects.html" class="nav-main-link">Project 成果</a>
 
-            <!-- Project 子選單：
-                 這裡的連結都指向 projects.html 的特定區塊
-                 等你之後在 projects.html 中建立對應 id 即可：
-                 #master-project / #work-project / #side-project / #contact
-            -->
+            <!-- 子項目：導向 projects.html 的特定區塊 -->
             <ul class="nav-sublist">
                 <li class="nav-subitem">
                     <a href="projects.html#master-project" class="nav-sublink">碩士專案</a>
@@ -328,173 +411,166 @@
             </ul>
         </div>
     </aside>
-    <!-- ========= 左側側邊欄結束 ========= -->
+    <!-- ========= 左側側欄結束 ========= -->
 
-    <!-- ========= 右側主內容開始 ========= -->
-    <!-- 加上 id="top"，方便 Home 首頁的錨點捲動到最上面 -->
-    <main class="content" id="top">
 
-        <!-- ===== 關於我區塊 (Topic｜關於我) ===== -->
-        <!-- id="about" 對應側邊欄的 href="#about" -->
-        <section class="section" id="about">
-            <h2 class="section-title">關於我 About Me</h2>
-            <p class="section-subtitle">
-                這裡簡單介紹你是誰、目前在做什麼，以及你在 AI / 演算法 / 設備上的興趣與方向。
-                下面的文字都是範例，你可以照自己的情況改掉。
-            </p>
+    <!-- ========= 右側主內容 ========= -->
+    <div class="content-wrapper" id="top">
+        <!-- 頁首大標題（HOME 首頁 + 紅線） -->
+        <header class="page-header">
+            <div class="page-header-title">HOME 首頁</div>
+            <div class="page-header-line"></div>
+        </header>
 
-            <div class="about-grid">
-                <!-- 左邊：自我介紹文字 -->
-                <div class="about-text">
-                    <p>
-                        我是王柏森，目前專注於 AI 演算法在工業設備與產線上的落地應用，
-                        包含 PCB 外觀檢測、瑕疵偵測與 Segmentation 等任務。
-                        在實務專案中，除了模型開發，也會與設備、機構與電控工程師合作，
-                        一起把演算法真正導入到機台與產線流程。
-                    </p>
-                    <p>
-                        我特別關注模型效能與穩定度，從資料前處理、模型選型、
-                        訓練策略到部署，都會考慮實際節拍、記憶體使用與維護成本。
-                        也會持續追蹤新技術（例如 Transformer 架構、輕量化、知識蒸餾等），
-                        將合適的技術導入到實際專案中。
-                    </p>
+        <!-- 真正內容容器：讓寬度固定在中間較好閱讀 -->
+        <main class="content">
 
-                    <!-- 關鍵字／技能標籤：你可以自由增減 -->
-                    <div class="about-tags">
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">Defect Inspection</span>
-                        <span class="tag">AI on Equipment</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">C# / C++（可依實際狀況修改）</span>
+            <!-- ===== 關於我 ===== -->
+            <section class="section" id="about">
+                <h2 class="section-title">ABOUT ME｜關於我</h2>
+                <p class="section-subtitle">
+                    這裡是你的簡短自我介紹，下面文字都是範例，請依你實際狀況修改。
+                </p>
+
+                <div class="about-grid">
+                    <!-- 左側文字內容 -->
+                    <div class="about-text">
+                        <p>
+                            我是王柏森，目前專注於 AI 演算法在工業設備與產線上的實際應用，
+                            包含 PCB 外觀檢測、瑕疵偵測與 Segmentation 等任務。
+                            在專案中除了模型開發，也會與設備、機構與電控工程師合作，
+                            將演算法真正導入機台與產線流程。
+                        </p>
+                        <p>
+                            我特別關注模型效能與穩定度，從資料前處理、模型選型、
+                            訓練策略到部署，都會考量實際節拍、記憶體使用與維護成本。
+                            平常也會持續追蹤新技術（例如 Transformer 架構、輕量化、知識蒸餾等），
+                            並選擇適合的部分導入實務專案。
+                        </p>
+
+                        <div class="about-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Defect Inspection</span>
+                            <span class="tag">AI on Equipment</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">C# / C++（可依實際調整）</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- 右邊：簡短重點卡片或小區塊
-                     你可以改成放一張專案圖片（assets/projects/xxx.jpg），
-                     或者換成其他你想強調的資訊。
-                -->
-                <div>
-                    <div class="info-card">
-                        <div class="info-card-title">目前專注的方向</div>
-                        <div>
-                            - PCB / 半導體檢測設備之 AI 演算法開發與導入<br>
-                            - 模型效能優化（GPU / ONNX / TensorRT 可視需要調整）<br>
-                            - 資料前處理、標註流程設計與自動化工具<br>
+                    <!-- 右側簡單資訊卡片（可改成放圖片或重點條列） -->
+                    <div>
+                        <div class="info-card">
+                            <div class="info-card-title">目前專注方向</div>
+                            <div>
+                                - PCB / 半導體檢測設備之 AI 演算法開發與導入<br>
+                                - 模型效能與推論速度優化（GPU / ONNX / TensorRT 等）<br>
+                                - 資料前處理、標註流程設計與自動化工具<br>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- ===== 關於我區塊結束 ===== -->
-              <!-- ===== 學經歷區塊 (Topic｜學經歷) ===== -->
-        <!-- id="experience" 對應側邊欄的 href="#experience" -->
-        <section class="section" id="experience">
-            <h2 class="section-title">學經歷 Experience</h2>
-            <p class="section-subtitle">
-                以下是你的學歷與工作經驗時間軸，從最近到過去，你可以依照自己的履歷改寫內容。
-            </p>
+            </section>
 
-            <!-- 時間軸容器 -->
-            <div class="timeline">
-                <!-- 一筆經歷範例：工作經驗 -->
-                <div class="timeline-item">
-                    <div class="timeline-role">AI 演算法工程師</div>
-                    <div class="timeline-org">某某科技股份有限公司（半導體 / PCB 設備）</div>
-                    <div class="timeline-time">2023 – 至今</div>
-                    <div class="timeline-desc">
-                        - PCB / 探針卡外觀檢測模型開發（分類、Segmentation、Anomaly Detection）<br>
-                        - 與設備、電控、機構工程合作進行機台整合<br>
-                        - 模型效能優化、記憶體調教、處理流程加速<br>
+            <!-- ===== 學經歷 ===== -->
+            <section class="section" id="experience">
+                <h2 class="section-title">EXPERIENCE｜學經歷</h2>
+                <p class="section-subtitle">
+                    以下是你的學歷與工作經驗，請依照實際時間與內容修改。
+                </p>
+
+                <div class="timeline">
+                    <!-- 工作經驗範例 -->
+                    <div class="timeline-item">
+                        <div class="timeline-role">AI 演算法工程師</div>
+                        <div class="timeline-org">某某科技股份有限公司（半導體 / PCB 設備）</div>
+                        <div class="timeline-time">2023 – 至今</div>
+                        <div class="timeline-desc">
+                            - PCB / 探針卡外觀檢測模型開發（分類、Segmentation、Anomaly Detection）<br>
+                            - 與設備、電控、機構工程師合作進行機台整合<br>
+                            - 模型效能優化、記憶體調教、處理流程加速<br>
+                        </div>
+                    </div>
+
+                    <!-- 碩士範例 -->
+                    <div class="timeline-item">
+                        <div class="timeline-role">碩士｜電機工程（或資訊工程）</div>
+                        <div class="timeline-org">某某大學（請自行修改）</div>
+                        <div class="timeline-time">2019 – 2021</div>
+                        <div class="timeline-desc">
+                            - 研究領域：影像處理、GAN、跨域轉換、超解析度等（依實際調整）<br>
+                            - 專注於模型效果與泛化能力的提升<br>
+                        </div>
+                    </div>
+
+                    <!-- 學士範例 -->
+                    <div class="timeline-item">
+                        <div class="timeline-role">學士｜資訊工程（範例）</div>
+                        <div class="timeline-org">某某大學</div>
+                        <div class="timeline-time">2015 – 2019</div>
+                        <div class="timeline-desc">
+                            - 主修演算法、資料結構、系統程式等核心課程<br>
+                            - 參與系上專題或比賽（可寫你的實際專題）<br>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- 一筆經歷範例：碩士 -->
-                <div class="timeline-item">
-                    <div class="timeline-role">碩士｜電機工程（或資訊工程）</div>
-                    <div class="timeline-org">某某大學（請自行修改）</div>
-                    <div class="timeline-time">2019 – 2021</div>
-                    <div class="timeline-desc">
-                        - 研究領域包含：影像處理、GAN、跨域轉換、超解析度（請依你的實際狀況調整）<br>
-                        - 專注於模型效果與泛化能力的提升<br>
+            <!-- ===== 技能專長 ===== -->
+            <section class="section" id="skills">
+                <h2 class="section-title">SKILLS｜技能專長</h2>
+                <p class="section-subtitle">
+                    整理你在 AI、程式語言、工具平台與軟實力方面的能力。
+                </p>
+
+                <div class="skills-grid">
+                    <!-- AI / ML -->
+                    <div class="skill-card">
+                        <div class="skill-title">AI / Machine Learning</div>
+                        <div class="skill-list">
+                            - CNN / ResNet / EfficientNet / Transformer<br>
+                            - Segmentation：U-Net, DeepLab, UNet++ 等<br>
+                            - PCB & 工業瑕疵偵測、異常檢測<br>
+                        </div>
+                    </div>
+
+                    <!-- 程式語言 -->
+                    <div class="skill-card">
+                        <div class="skill-title">程式語言</div>
+                        <div class="skill-list">
+                            - Python（AI / 資料處理主力）<br>
+                            - C#（設備整合、UI、前處理）<br>
+                            - C++（高效能程式，可依程度調整）<br>
+                        </div>
+                    </div>
+
+                    <!-- 工具平台 -->
+                    <div class="skill-card">
+                        <div class="skill-title">工具 / 平台</div>
+                        <div class="skill-list">
+                            - PyTorch / TensorFlow / ONNX Runtime<br>
+                            - Git / GitHub / GitHub Actions<br>
+                            - Linux / Docker（依實際使用狀況增減）<br>
+                        </div>
+                    </div>
+
+                    <!-- 其他軟實力 -->
+                    <div class="skill-card">
+                        <div class="skill-title">其他</div>
+                        <div class="skill-list">
+                            - 與跨領域工程師協作（設備 / 機構 / 電控）<br>
+                            - 專案文件撰寫與簡報製作<br>
+                            - 英文技術文件閱讀能力佳<br>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- 一筆經歷範例：學士 -->
-                <div class="timeline-item">
-                    <div class="timeline-role">學士｜資訊工程（範例）</div>
-                    <div class="timeline-org">某某大學</div>
-                    <div class="timeline-time">2015 – 2019</div>
-                    <div class="timeline-desc">
-                        - 主修演算法、資料結構、系統程式等核心課程<br>
-                        - 完成相關專題（可以寫你大學專題名稱）<br>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ===== 學經歷區塊結束 ===== -->
-
-
-        <!-- ===== 技能專長區塊 (Topic｜技能專長) ===== -->
-        <!-- id="skills" 對應側邊欄的 href="#skills" -->
-        <section class="section" id="skills">
-            <h2 class="section-title">技能專長 Skills</h2>
-            <p class="section-subtitle">
-                整理你的專業技能，包括 AI、程式語言、工具平台等。你可以任意調整內容。
-            </p>
-
-            <!-- 技能卡片網格排列 -->
-            <div class="skills-grid">
-
-                <!-- 技能卡片一：AI/ML -->
-                <div class="skill-card">
-                    <div class="skill-title">AI / Machine Learning</div>
-                    <div class="skill-list">
-                        - CNN / ResNet / EfficientNet / Transformer<br>
-                        - Segmentation（U-Net, DeepLab, UNet++ 等）<br>
-                        - PCB & 工業瑕疵偵測、異常檢測<br>
-                    </div>
-                </div>
-
-                <!-- 技能卡片二：程式語言 -->
-                <div class="skill-card">
-                    <div class="skill-title">程式語言</div>
-                    <div class="skill-list">
-                        - Python（AI / 資料處理主力語言）<br>
-                        - C#（設備整合、UI、前處理）<br>
-                        - C++（高效能程式，可依程度調整）<br>
-                    </div>
-                </div>
-
-                <!-- 技能卡片三：工具平台 -->
-                <div class="skill-card">
-                    <div class="skill-title">工具 / 平台</div>
-                    <div class="skill-list">
-                        - PyTorch / TensorFlow / ONNX Runtime<br>
-                        - Git / GitHub / GitHub Actions<br>
-                        - Linux / Docker（可依實際使用增加）<br>
-                    </div>
-                </div>
-
-                <!-- 技能卡片四：其他軟實力 -->
-                <div class="skill-card">
-                    <div class="skill-title">其他</div>
-                    <div class="skill-list">
-                        - 與跨領域工程師協作（設備 / 機構 / 電控）<br>
-                        - 專案文件撰寫與簡報製作<br>
-                        - 英文技術文件閱讀能力強<br>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- ===== 技能專長區塊結束 ===== -->
-
-    </main>
+        </main>
+    </div>
     <!-- ========= 右側主內容結束 ========= -->
 
 </div>
-<!-- ========= layout 結束 ========= -->
 
 </body>
 </html>
