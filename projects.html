@@ -73,30 +73,30 @@
         }
 
         /* 個人資訊區（大頭照＋名字＋職稱） */
-        .profile {
+        /* .profile {
             margin-top: 8px;
             text-align: left;
-        }
+        } */
 
         /* 大頭照：請放在 assets/profile.jpg */
-        .profile-avatar {
+        /* .profile-avatar {
             width: 150px;
             height: 150px;
             border-radius: 4px;
             object-fit: cover;
             border: 1px solid var(--border);
             margin-bottom: 8px;
-        }
+        } */
 
-        .profile-name {
+        /* .profile-name {
             font-size: 15px;
             font-weight: 600;
-        }
+        } */
 
-        .profile-title {
+        /* .profile-title {
             font-size: 12px;
             color: var(--muted);
-        }
+        } */
 
         /* 側欄區塊標題：HOME / Project */
         .nav-section-title {
@@ -323,21 +323,36 @@
                 HOME PAGE
             </div>
             <div class="sidebar-brand-sub">
-                AI Algorithm Engineer
+                AI Image Algorithm Engineer
             </div>
         </div>
 
         <!-- 個人資訊 -->
-        <div class="profile">
+        <!-- <div class="profile">
             <img src="assets/profile.jpg" alt="Profile" class="profile-avatar">
             <div class="profile-name">王柏森</div>
             <div class="profile-title">AI 演算法工程師</div>
-        </div>
+        </div> -->
 
         <!-- Home 導覽（回 index.html） -->
         <div>
             <div class="nav-section-title">HOME</div>
-            <a href="index.html" class="nav-main-link">Home 首頁</a>
+            <!-- 本頁就是首頁，所以 active -->
+            <a href="#top" class="nav-main-link active">Home 首頁</a>
+
+            <!-- Topic 子項：捲動到本頁的區塊 -->
+            <div class="nav-section-title" style="margin-top: 10px;">Topic</div>
+            <ul class="nav-sublist">
+                <li class="nav-subitem">
+                    <a href="#about" class="nav-sublink">關於我</a>
+                </li>
+                <li class="nav-subitem">
+                    <a href="#experience" class="nav-sublink">學經歷</a>
+                </li>
+                <li class="nav-subitem">
+                    <a href="#skills" class="nav-sublink">技能專長</a>
+                </li>
+            </ul>
         </div>
 
         <!-- Project 導覽（本頁 active） -->
