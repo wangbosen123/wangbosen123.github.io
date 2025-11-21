@@ -189,17 +189,27 @@
             gap: 20px;
         }
 
-        /* 單一專案卡片 */
-        .project-card {
+        /* /* 單一專案卡片 */
+        /* .project-card {
             background: var(--card-bg);
             border-radius: 4px;
             border: 1px solid var(--border);
             overflow: hidden;
             display: flex;
             /* flex-direction: column; */
-            flex-direction: row;
+            /* flex-direction: row;
             gap: 16px;
             padding: 16px;
+        }  */ 
+        /* 整張卡片：上下堆疊兩組 row */
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;  /* ⭐ 一定要 column，兩個 .project-row 就會上下排 */
+            gap: 24px;               /* 兩組 row 之間的距離 */
         }
 
         .project-row {
@@ -399,10 +409,6 @@
             <!-- 對應側邊欄 href="#master-project" -->
             <section class="section" id="master-project">
                 <h2 class="section-title">碩士專案 Master Project</h2>
-                <p class="section-subtitle">
-                    這裡放你的碩論或碩士期間的代表性專案，可自由修改文字與圖片。
-                </p>
-
                 <div class="project-grid">
                     <!-- 碩士專案卡片範例 -->
                     <article class="project-card">
@@ -451,24 +457,6 @@
                     
                     </article>
 
-                    <!-- 你若有第二個相關碩士專案，可再新增一個卡片 -->
-                    <!--
-                    <article class="project-card">
-                        <img src="assets/projects/master_project_2.jpg"
-                             alt="Master Project 2"
-                             class="project-image">
-                        <div class="project-body">
-                            <div class="project-title">第二個碩士專案標題</div>
-                            <div class="project-tagline">簡短英文介紹一句</div>
-                            <div class="project-desc">
-                                這裡描述專案目標、方法與成果。
-                            </div>
-                            <div class="project-tags">
-                                <span class="project-tag">Deep Learning</span>
-                            </div>
-                        </div>
-                    </article>
-                    -->
                 </div>
             </section>
 
