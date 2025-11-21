@@ -196,18 +196,31 @@
             border: 1px solid var(--border);
             overflow: hidden;
             display: flex;
-            flex-direction: column;
+            /* flex-direction: column; */
+            flex-direction: row;
+            gap: 16px;
+            padding: 16px;
         }
 
         /* 專案圖片：請放在 assets/projects/xxx.jpg */
-        .project-image {
+        /* .project-image {
             width: 100%;
             height: 160px;
             object-fit: cover;
             background: #eeeeee;
+        } */
+        .project-image {
+            width: 260px;        /* ⭐ 改成固定寬度，適合左側圖片 */
+            height: 180px;       /* 你可調整 160~200px */
+            object-fit: cover;
+            border-radius: 4px;
         }
 
+        /* .project-body {
+            padding: 14px 14px 16px;
+        } */
         .project-body {
+            flex: 1;              /* ⭐ 自動填滿右側剩餘空間 */
             padding: 14px 14px 16px;
         }
 
@@ -281,6 +294,15 @@
 
             .content-wrapper {
                 padding: 16px 16px 32px;
+            }
+            /* ⭐ 手機版 Project 卡片改成上下排 */
+            .project-card {
+                flex-direction: column;
+            }
+        
+            .project-image {
+                width: 100%;
+                height: 180px; /* 可以保留高度或改成 auto，看你圖片比例 */
             }
         }
     </style>
