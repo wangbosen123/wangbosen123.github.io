@@ -188,7 +188,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 120px;
         }
 
         /* /* 單一專案卡片 */
@@ -553,57 +553,58 @@
 
                         <!-- 第一組：左右排 -->
                         <div class="project-row">
-                            <img src="assets/projects/碩論_AI生成模型.jpg"
+                            <img src="assets/projects/彰基_資料.jpg"
                                  alt="Master Project Example"
                                  class="project-image">
                     
                             <div class="project-body">
-                                <div class="project-title">人臉超解析度合成系統</div>
+                                <div class="project-title">腫瘤資料來源</div>
                                 <div class="project-tagline">
-                                    Face Super-Resolution with GAN-based model
+                                    Resource data of tumor
                                 </div>
                                 <div class="project-desc">
-                                    <strong>Train-Stage1</strong>: 訓練上半部分Autoencoder，進行壓縮還原任務。<br>
-                                    <strong>Train-Stage2</strong>: 訓練回歸模型，不同低解析學習對應高解析影像在空間上的分布。<br>
-                                    <strong>Train-Stage3</strong>: GAN-based 模型訓練，輸入低解析影像學習生成對應仿真高解析影像。<br>
-                                    <strong>Train-Stage4</strong>: 全部模型權重調整成可訓練，Loss皆可調整模型，End-to-End 訓練。<br>
-                                    透過不同階段的Pre-Train可以確保模型有辦法訓練得起還，並且透過一對一壓縮還原模型幫助<br>
-                                    多對一還原模型，再加上回歸的效果可以模擬真實情況，不同的低解析影像都可以還原至對應高解析影像。<br>
+                                    - (A)  我們拿到原始的MRI腫瘤資料<br>
+                                    - (B)  我們從(A)經過裁切後得到的腫瘤資料<br>
+                                    - (C)  (B)經過影像處理-直方圖均衡化得到的腫瘤資料<br>
+                                    經過直方圖均衡化可以有效增加影像對比讓模型學習到更具有鑑別姓的特徵。<br>
+                                    也需要跟醫生溝通怎麼的特徵萃取不會模糊影像上判斷良惡性腫瘤的特徵<br>
                                 </div>
                             </div>
                         </div>
                     
                         <!-- 第二組：左右排 -->
                         <div class="project-row">
-                            <img src="assets/projects/碩論_AI識別模型.jpg"
+                            <img src="assets/projects/彰基_架構.jpg"
                                  alt="Master Project Example"
                                  class="project-image">
                     
                             <div class="project-body">
-                                <div class="project-title">人臉身分辨識整合系統</div>
-                                <div class="project-tagline">Identity Recognition</div>
+                                <div class="project-title">演算法架構圖</div>
+                                <div class="project-tagline">Type of Tumor Classification</div>
                                 <div class="project-desc">
-                                    <strong>老師模型輸入影像特性</strong>: 輸入高解析影像，單一影像、多樣性小、鑑別性高，容易Overfitting.<br>
-                                    <strong>學生模型輸入影像特性</strong>: 輸入低解析影像，多樣化影像，鑑別性低，容易Underfitting.<br>
-                                    將兩者模型的特徵進行特徵融合，效果會較各別單一模型識別效果更佳，<strong>也驗證合成高解析影像識別結果叫低解析影像高。</strong><br>
+                                    1. VGG16 萃取影像特徵
+                                    2. 自定義全連階層並寫入Triplet loss (限制相同型態腫瘤在空間中接近，不同型態腫瘤在空間中遠離)
+                                    3. 自定義分類器進行訓練
+                                    4. 模組最後透過不同的機器學習模型進行Assemble learning.
+                                    透過Triplet loss得到初步較好的Boundary，在透過Assemble learning增加泛化性，讓測試資料準確率達100%。
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 第六組：結論-->
+                        <!-- 第三組：結論-->
                         <div class="project-row">
                             <div class="project-body">
                                 <div class="project-desc">
-                                    <strong>總結:</strong>
-                                    1. 合成模型在加入回歸時，可以讓不同解析度都還原的更好，模擬真實世界可能有不同解析度的情況。<br>
-                                    2. 識別模型在觀察不同影像特性後，開發老師以及學生模型，讓識別效果變得更佳。<br>
-                                    3. 推論時，引入Gan Inversion 技術，在特徵空間中動態尋找對應特徵，讓推論結果更好。<br>
+                                    <strong>論文連結:</strong>
+                                     <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/hed.27396" target="_blank" rel="noopener noreferrer">
+                                        https://onlinelibrary.wiley.com/doi/abs/10.1002/hed.27396
+                                    </a>
                                 </div>
                                 <div class="project-tags">
-                                    <span class="project-tag">GAN/AE</span>
-                                    <span class="project-tag">Super-Resolution</span>
-                                    <span class="project-tag">Face Recognition</span>
-                                    <span class="project-tag">AI/DL/ML</span>
+                                    <span class="project-tag">CNN/VGG16</span>
+                                    <span class="project-tag">Classification</span>
+                                    <span class="project-tag">Contrast Learning</span>
+                                    <span class="project-tag">Assemble Learning</span>
                                     <span class="project-tag">Tensorflow</span>
                                     <span class="project-tag">Python</span>
                                 </div>
