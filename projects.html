@@ -188,7 +188,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
-            margin-bottom: 120px;
+            margin-bottom: 80px;
         }
 
         /* /* 單一專案卡片 */
@@ -674,63 +674,45 @@
 
 
             <!-- ===== Side Project ===== -->
-            <section class="section" id="side-project">
-                <h2 class="section-title">Side Projects</h2>
-                <p class="section-subtitle">
-                    放你私下做的學習型 / 實驗型專案，強調自學能力與興趣。
-                </p>
-
+            <section class="section" id="Side Project">
+                <h2 class="section-title">"Side Project"</h2>
+                <p class="section-subtitle">LLM x RAG x FlaskAPI</p>
+                <p class="section-subtitle">個人聊天助理</p>
                 <div class="project-grid">
-                    <!-- Side Project 1 -->
+                    
                     <article class="project-card">
-                        <img src="assets/projects/side_rag_agent.jpg"
-                             alt="RAG Agent"
-                             class="project-image">
 
-                        <div class="project-body">
-                            <div class="project-title">DocuMind：文件檢索問答 AI Agent</div>
-                            <div class="project-tagline">
-                                RAG-based Document QA Agent with Local LLM
-                            </div>
-                            <div class="project-desc">
-                                建立可讀取 PDF / 技術文件的 AI Agent，
-                                透過向量資料庫與檢索增強生成（RAG）架構，
-                                讓模型能根據文件內容回答問題，並搭配輕量化 LLM，
-                                在單機 GPU 上即可流暢運作。
-                            </div>
-                            <div class="project-tags">
-                                <span class="project-tag">RAG</span>
-                                <span class="project-tag">LLM</span>
-                                <span class="project-tag">Vector DB</span>
-                                <span class="project-tag">Python</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Side Project 2 -->
-                    <article class="project-card">
-                        <img src="assets/projects/side_gan_experiment.jpg"
-                             alt="GAN Experiment"
-                             class="project-image">
-
-                        <div class="project-body">
-                            <div class="project-title">GAN 影像風格轉換與超解析實驗</div>
-                            <div class="project-tagline">
-                                Image Style Transfer & SR with GAN Variants
-                            </div>
-                            <div class="project-desc">
-                                嘗試不同 GAN 架構進行影像風格轉換與超解析度任務，
-                                測試多種損失函數與資料增強策略，觀察視覺品質、
-                                訓練穩定度與收斂速度，作為未來專案導入的技術預研。
-                            </div>
-                            <div class="project-tags">
-                                <span class="project-tag">GAN</span>
-                                <span class="project-tag">Image Translation</span>
-                                <span class="project-tag">Experiment</span>
+                        <!-- 第一組：左右排 -->
+                        <div class="project-row">
+                            <img src="assets/projects/LLM.jpg"
+                                 alt="Master Project Example"
+                                 class="project-image">
+                    
+                            <div class="project-body">
+                                <div class="project-title">個人知識庫問答系統</div>
+                                <div class="project-tagline">
+                                    Personal Chat-rubot
+                                </div>
+                                <div class="project-desc">
+                                    1. Download Microsoft 7B LLMDownload 特徵萃取模型<br>
+                                    2. 爬蟲抓取網路資料<br>
+                                    3. 建立RAG資料庫<br>
+                                    4. 撰寫pipeline<br>
+                                        - 使用者輸入<br>
+                                        - Retrieval-augmented generation<br>
+                                        -  LLM 輸出<br>
+                                    5. Flask API<br>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="project-tag">Microsoft LLM</span>
+                                    <span class="project-tag">Retrieval-augmented generation</span>
+                                    <span class="project-tag">Flask API</span>
+                                </div>
                             </div>
                         </div>
                     </article>
                 </div>
+
             </section>
 
         </main>
