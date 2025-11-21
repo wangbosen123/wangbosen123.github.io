@@ -631,59 +631,94 @@
 
 
             <!-- ===== 工作專案 ===== -->
-            <section class="section" id="work-project">
-                <h2 class="section-title">工作專案 Work Projects</h2>
-
+            <section class="section" id="Work Project">
+                <h2 class="section-title">Work Project</h2>
+                <p class="section-subtitle">PCB保護噴塗機</p>
                 <div class="project-grid">
-                    <!-- 工作專案 1 -->
+                    
                     <article class="project-card">
-                        <img src="assets/projects/work_pcb_inspection.jpg"
-                             alt="PCB Inspection Project"
-                             class="project-image">
 
-                        <div class="project-body">
-                            <div class="project-title">PCB 外觀瑕疵檢測系統</div>
-                            <div class="project-tagline">
-                                PCB Defect Inspection with Segmentation + Anomaly Detection
-                            </div>
-                            <div class="project-desc">
-                                建立 PCB 外觀檢測模型，針對焊盤、文字、孔位等區域進行分割與瑕疵分類，
-                                以深度學習模型取代部分傳統規則，大幅提升泛化能力並降低漏檢率。
-                                同時考量機台節拍與 GPU 資源，進行模型壓縮與部署效能優化。
-                            </div>
-                            <div class="project-tags">
-                                <span class="project-tag">Segmentation</span>
-                                <span class="project-tag">Anomaly Detection</span>
-                                <span class="project-tag">ONNX Runtime</span>
-                                <span class="project-tag">GPU Inference</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- 工作專案 2 -->
-                    <article class="project-card">
-                        <img src="assets/projects/work_equipment_integration.jpg"
-                             alt="Equipment Integration"
-                             class="project-image">
-
-                        <div class="project-body">
-                            <div class="project-title">AI 與設備控制整合專案</div>
-                            <div class="project-tagline">
-                                End-to-end AI Integration on Production Equipment
-                            </div>
-                            <div class="project-desc">
-                                將 AI 模型整合到實際設備流程中，包含影像擷取、前處理、模型推論與後處理決策，
-                                與設備與電控團隊合作設計通訊介面與錯誤處理機制，
-                                讓模型結果能穩定驅動機構動作並支援產線節拍需求。
-                            </div>
-                            <div class="project-tags">
-                                <span class="project-tag">C#</span>
-                                <span class="project-tag">Equipment Integration</span>
-                                <span class="project-tag">Real-time System</span>
+                        <!-- 第一組：左右排 -->
+                        <div class="project-row">
+                            <img src="assets/projects/噴塗.jpg"
+                                 alt="Master Project Example"
+                                 class="project-image">
+                    
+                            <div class="project-body">
+                                <div class="project-title">PCB保護噴塗機_流程圖細節</div>
+                                <div class="project-tagline">
+                                    Flow
+                                </div>
+                                <div class="project-desc">
+                                    <strong>1.影像資料前處理</strong>:將影像轉換HSV色彩空間，針對使用者藍筆標記的保護區域進行二值化處理，
+                                    搭配形態學運算與遮罩生成濾除雜訊，提取目標區域，有效提升模型的學習專注度與後續分割準確度。<br>
+                                    <strong>2.模型設計與規劃</strong>:採用YOLOv8-Segmentation進行 pixel-level分割，透過實驗發現:<br>
+                                    <strong>高解析訓練的模型(pixel-size 小)</strong>：擅長精細輪廓處理，大區域或複雜圖形泛化能力較弱。<br>
+                                    <strong>低解析訓練的模型(pixel-size 大)</strong>：適用大範圍、形狀複雜區域，對小區域邊界不精細。<br>
+                                    透過實驗驗證整合兩模型輸出，達到補償效果並強化泛化能力，並克服初期資料不足(Few-shot learning)限制，有效縮短導入週期並突破製程瓶頸。<br>
+                                    <strong>3. 路徑規劃演算法</strong>:
+                                    根據雙模型產出的遮罩結果，動態選取最佳遮罩進行處理，並以滑動視窗策略調整 X/Y 軸移動步長，規劃最適噴塗軌跡，自動生成控制序列串接設備執行。<br>
+                                    <strong>4.系統整合與閉環訓練</strong>:開發半自動標註系統，將實際設備運行影像與標記資料回傳至伺服器，用於持續模型再訓練與更新，實現 AI系統的自我優化閉環架構。<br>
+                                    <strong>5.實績成果：</strong>
+                                    成功導入產線流程，穩定執行區域分割與路徑生成任務，顯著提升設備運作精度與效率。<strong>整體控制誤差壓低至0~5mm，加快產線生產效能。</strong><br>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="project-tag">YOLOv8-Segmentation</span>
+                                    <span class="project-tag">Path-Planing</span>
+                                    <span class="project-tag">Pytorch</span>
+                                    <span class="project-tag">Python/C#</span>
+                                    <span class="project-tag">設備整合</span>
+                                </div>
                             </div>
                         </div>
                     </article>
                 </div>
+
+                
+                <p class="section-subtitle">PCB外觀瑕疵檢測機</p>
+                <div class="project-grid">
+                    
+                    <article class="project-card">
+
+                        <!-- 第一組：左右排 -->
+                        <div class="project-row">
+                            <img src="assets/projects/外觀.jpg"
+                                 alt="Master Project Example"
+                                 class="project-image">
+                    
+                            <div class="project-body">
+                                <div class="project-title">PCB外觀瑕疵檢測機_流程圖細節</div>
+                                <div class="project-tagline">
+                                    Flow
+                                </div>
+                                <div class="project-desc">
+                                    <strong>1.虛實整合</strong>:解析PCB Gerber檔案以取得設計層之Pad與孔洞座標，結合實際設備拍攝光學影像，透過平面空間轉換將設計資訊對應至實際圖像，並完成目標區域裁切。<br>
+                                    <strong>2.影像前處理</strong>:
+                                    針對文字圖樣進行前處理，包含二值化、Histogram 分析與形態學運算，強化切割準確性。因一個FOV無法涵蓋整板區域，嘗試使用Halcon進行影像拼接，取得完整、高解析輸入。<br>
+                                    <strong>3. 模型設計與規劃</strong>:<br>
+                                    <strong>Pad / Hole 缺陷檢測</strong>：採用 PatchCore無監督學習，僅需正常樣本即可建立基準分布，透過熱圖（Anomaly Heatmap）標示異常點，解決瑕疵樣本不足的問題。<br>
+                                    <strong>文字鏡像判定</strong>：由於文字有群組印刷特性，先以影像處理技術分割單字，再以自建分類模型進行方向判斷，結合多數決機制（Majority Voting）決定整體鏡像與否。<br>
+                                    <strong>外觀與線路瑕疵</strong>：採用 YOLOv10-OBB（Oriented Bounding Box）偵測旋轉型或不規則形狀之異常，強化對非預期形狀瑕疵的適應能力。<br>
+                                    <strong>4.專案成果與效益</strong>：<br>
+                                    <strong>高效能檢測指標</strong>：實測 Recall 達 0.95、Precision 為 0.9，為了降低誤判（漏檢），系統偏向Recall 優化，確保缺陷不漏掉，即使稍降低 precision，也大幅減少人工逐一檢查的負擔。<br>
+                                    <strong>產線應用效益</strong>：全流程檢測時間僅約 15分鐘（PAD+Hole 約 15 分、文字鏡像與外觀各約 5 分，因多線程時間不累加)，取代人工需逐一檢查上萬個孔洞的不可能任務，大幅提升準確性與效率。<br>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="project-tag">Gerber</span>
+                                    <span class="project-tag">Alignment</span>
+                                    <span class="project-tag">YOLOv10-OBB</span>
+                                    <span class="project-tag">Patchcore</span>
+                                    <span class="project-tag">Custom Classification</span>
+                                    <span class="project-tag">OpenCV</span>
+                                    <span class="project-tag">Halcon</span>
+                                    <span class="project-tag">Python/C#/MSSQL</span>
+                                    <span class="project-tag">設備整合</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
             </section>
 
 
